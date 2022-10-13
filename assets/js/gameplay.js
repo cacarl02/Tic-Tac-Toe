@@ -9,6 +9,9 @@ const gameSelectors = document.querySelector('.game-selectors');
 const player1Score = document.querySelector('#player1-score');
 const player2Score = document.querySelector('#player2-score');
 
+const undo = document.querySelector('#btn_previous');
+const redo = document.querySelector('#btn_next');
+
 const winningConditions = [
     [0,1,2],
     [3,4,5],
@@ -21,7 +24,11 @@ const winningConditions = [
 ];
 
 let board = ['','','','','','','','',''];
+let markHistory = [];
+let cellHistory = [];
+let revenge = false;
 let isGameOngoing = false;
+let turnCount = 0;
 
 startGame();
 function startGame() {
@@ -35,12 +42,15 @@ function cellClicked() {    //cell-click functions
     if(board[cellIndex] !=="" || !isGameOngoing) {
         return;
     }
+    cellHistory.push(cellIndex);
+    turnCount++;
     updateCell(this, cellIndex);
     checkWinner();
 }
 function updateCell(cell,index) { //output on cell-click
     board[index] = currentPlayer;
     cell.textContent = currentPlayer;
+    markHistory.push(board[index]);
 }
 function changePlayer() {   //alternating turn
     currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -65,16 +75,15 @@ function checkWinner() {    //winning, losing, and draw functions
         }
     }
     if(roundWon) {
-        playerTurn.textContent = `${currentPlayer} wins!`;
-        isGameOngoing = false;
         displayResult.classList.remove('hidden');
         announce.textContent = `${currentPlayer} wins!`;
+        playerTurn.textContent = `${currentPlayer} wins!`;
+        isGameOngoing = false;
+        revenge = true;
         if(currentPlayer === 'X') {
             p1count++;
-            changePlayer();
         } else {
             p2count++;
-            changePlayer();
         }
         player1Score.textContent = p1count;
         player2Score.textContent = p2count;
@@ -101,18 +110,46 @@ function resetData() {     //reset score count every quit and return to lobby
     currentPlayer = '';
 }
 function restartGame() {    //reset every cell to '', loser plays first
+    if(revenge) {
+        changePlayer();
+    }
     board = ['','','','','','','','',''];
+    markHistory = [];
+    cellHistory = [];
+    turnCount = 0;
     playerTurn.textContent = `${currentPlayer} will go first!`;
     cells.forEach(cell => cell.textContent = '');
     isGameOngoing = true;
     displayResult.classList.add('hidden');
     gameSelectors.classList.add('hidden');
+    revenge = false;
 }
 
 returnLobby.addEventListener('click', quitListener)
 
 reviewGame.addEventListener('click', () => {
+    redo.style.visibility = 'hidden';
     displayResult.classList.add('hidden');
     gameSelectors.classList.remove('hidden');
     
 })
+
+const prevClick = () => {
+    if(turnCount ===1) {
+        undo.style.visibility = 'hidden';
+    }
+    cells[cellHistory[turnCount-1]].textContent = '';
+    turnCount--;
+    redo.style.visibility = 'visible';
+}
+const nextClick = () => {
+    if(turnCount === markHistory.length-1) {
+        redo.style.visibility = 'hidden';
+    }
+    cells[cellHistory[turnCount]].textContent = `${markHistory[turnCount]}`;
+    turnCount++;
+    undo.style.visibility = 'visible';
+}
+
+undo.addEventListener('click', prevClick);
+redo.addEventListener('click', nextClick);
