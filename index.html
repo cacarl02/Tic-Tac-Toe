@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/gameboard.css">
+    <link rel="stylesheet" href="./assets/css/mainpage.css">
+    <script src="./assets/js/styles.js" defer></script>
+    <script src="./assets/js/gameplay.js" defer></script>
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <!--page 1-->
+    <div class="page1">
+        <h1 class="game-title">Tic Tac Toe Let's Go!</h1>
+        <button class="back-button hidden">&#8678; Back</button>
+        <button class="main-settings" id="settings">&#9881;</button>
+        <div class="game-container main-page">
+            <button class="game-buttons" id="play">Play</button>
+            <button class="game-buttons" id="help">Help</button>
+            <button class="game-buttons" id="about">About</button>
+        </div>
+            <!--page 1.1-->
+        <div class="page1-1 game-container hidden">
+            <button class="game-buttons one-player">1 Player</button>
+            <button class="game-buttons two-player">2 Players</button>
+        </div>
+            <!--page 1.2-->
+        <div class="page1-2 game-container hidden">
+            <span>Mechanics</span>
+            <span>1. User can select either 1-Player or 2-Player modes.</span>
+            <span>2. Input Name and choose a player to move first.</span>
+            <span>3. First player to get 3 combinations on a line wins!</span>
+            <span>4. Loser plays first on the next round.</span>
+            <span>5. Don't forget to enjoy, umupo, magrelax, at uminom ng... BANAYAD WHISKEY! </span>
+        </div>
+            <!--page 1.3-->
+        <div class="page1-3 game-container hidden">
+            <span>Copyright 2022 Betelguese Inc.</span>
+        </div>
+    </div>
+
+    <!--page 1.1.1-->
+    <div class="page1-1-1 hidden">
+        <div class="nav-bar">
+            <button id="quit">&#8678; Quit</button>
+            <h1>Tic Tac Toe Let's Go!</h1>
+            <button id="settings">&#9881;</button>
+        </div>
+        <div class="scoresheet">
+            <span id="player1_name">Player 1</span>
+            <div class="scoreboard">
+                <span id="player1-score">0</span>:
+                <span id="player2-score">0</span>
+            </div>
+            <span id="player2_name">Player 2</span>
+        </div>
+        <div class="player-turn"></div>
+        <div class="board" id="board">
+            <button class="cell" cellIndex="0"></button>
+            <button class="cell" cellIndex="1"></button>
+            <button class="cell" cellIndex="2"></button>
+            <button class="cell" cellIndex="3"></button>
+            <button class="cell" cellIndex="4"></button>
+            <button class="cell" cellIndex="5"></button>
+            <button class="cell" cellIndex="6"></button>
+            <button class="cell" cellIndex="7"></button>
+            <button class="cell" cellIndex="8"></button>
+        </div>
+        <div class="player-form hidden">
+            <div class="form-content">
+                <span>Who will go First?</span>
+                <div class="first-turn">
+                    <button id="btn_x" class="playfirst_btn">
+                        <span>X</span>
+                    </button>
+                    <button id="btn_o" class="playfirst_btn">
+                        <span>O</span>
+                    </button>
+                </div>
+                <span class="error-hint hidden">Please select who'll play first.</span>
+                <div class="player_names">
+                    <div class="player_name">
+                        <span>Player X:</span>
+                        <input id="player_1" type="text" placeholder="Player 1" maxlength="10">
+                        <span class="error-hint hidden">Name must be 1-10 characters.</span>
+                    </div>
+                    <div class="player_name">
+                        <span>Player O:</span>
+                        <input id="player_2" type="text" placeholder="Player 2" maxlength="10">
+                        <span class="error-hint hidden">Name must be 1-10 characters.</span>
+                    </div>
+                </div>
+                <div class="play_btn">
+                    <input type="submit" id="letsplay" value="Let's play!">
+                </div>
+            </div>
+        </div>
+        <div class="game-selectors hidden">
+            <button class="btn-ingame" id="btn-previous">Previous</button>
+            <button class="btn-ingame retry">Play Again</button>
+            <button class="btn-ingame" id="btn-next">Next</button>
+        </div>
+        <div class="quit-popup hidden">
+            <div class="quit-content">
+                <span>Are you sure you want to quit?</span>
+                <span><i>(All changes will not be saved)</i></span>
+                <div class="quit-option">
+                    <button class="quit-btn" id="proceed">Yes</button>
+                    <button class="quit-btn" id="resume">No</button>
+                </div>
+            </div>
+        </div>
+        <div class="display-result hidden">
+            <div class="result-content">
+                <div class="announce-result"></div>
+                <button class="btn-result retry">Play Again</button>
+                <button class="btn-result" id="review">Review Game</button>
+                <button class="btn-result" id="lobby">Return to Lobby</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
