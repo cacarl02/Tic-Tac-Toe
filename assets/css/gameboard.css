@@ -91,6 +91,7 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    min-height: 350px;
 }
 .result-content {
     height: 40%;
@@ -107,6 +108,7 @@
     width: 100px;
     font-size: 20px;
     border-radius: 20px;
+    padding: 5px 0;
 }#quit, .back-button{
     top: 35px;
     left: 20px;
@@ -146,25 +148,31 @@
 }
 .form_title {
     width: 90%;
+    background-color: #555;
+    border-radius: 8px;
+    padding: 8px;
 }
 .first-turn {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #222;
 }
 .playfirst_btn {
     width: 50%;
-    padding: 16px 0;
+    padding: 6px 0;
     font-size: 32px;
     background-color: #222;
-}
-.playfirst_btn span {
-    color: #777;
+    color: #555;
 }
 .x_first {
-    background-color: #777;
+    background-color: #555;
     color: dodgerblue;
 }
 .o_first {
-    background-color: #777;
+    background-color: #555;
     color: gold;
 }
 input[type='text'] {

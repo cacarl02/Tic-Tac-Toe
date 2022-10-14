@@ -28,7 +28,7 @@ body {
     opacity: 1;
     transition: opacity 1s ease;
 }
-.game-buttons, .back-button, .btn-result, .quit-btn, #quit, #settings, .cell {
+.game-buttons, .back-button, .btn-result, .playfirst_btn, .quit-btn, #quit, #settings, .cell {
     cursor: pointer;
 }
 .page1{
@@ -53,6 +53,7 @@ body {
 .game-title {
     text-align: center;
     font-size: 48px;
+    margin-bottom: 30px;
 }
 .game-buttons {
     font-size: 24px;

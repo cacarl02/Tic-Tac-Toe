@@ -7,19 +7,29 @@
         width: 60%;
         height: 40%;
     }
-    .game-title {
-        margin-bottom: 50px;
-    }
 }
 @media screen and (max-width: 550px) {
     .game-title {
         font-size: 36px;
     }   
     .quit-content, .result-content, .form-content {
-        width: 80%;
-        height: 30%;
+        width: 85%;
     }
     .scoresheet {
         padding: 20px;
+    }
+}
+@media screen and (max-height: 750px) {
+    .game-title {
+        margin-bottom: 10px;
+    }
+    .main-settings {
+        top: 10px;
+    }
+    .nav-bar {
+        top: 10px;
+    }
+    .back-button {
+        top: 25px;
     }
 }

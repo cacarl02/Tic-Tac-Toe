@@ -121,7 +121,7 @@ function restartGame() {    //reset every cell to '', loser plays first
     cells.forEach(cell => cell.textContent = '');
     isGameOngoing = true;
     displayResult.classList.add('hidden');
-    gameSelectors.classList.add('hidden');
+    gameSelectors.classList.add('hide');
     revenge = false;
     undo.style.visibility = 'visible';
     btnX.classList.remove('x_first');
@@ -133,7 +133,7 @@ returnLobby.addEventListener('click', quitListener)
 reviewGame.addEventListener('click', () => {
     redo.style.visibility = 'hidden';
     displayResult.classList.add('hidden');
-    gameSelectors.classList.remove('hidden');
+    gameSelectors.classList.remove('hide');
 })
 
 const prevClick = () => {
