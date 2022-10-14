@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/gameboard.css">
     <link rel="stylesheet" href="./assets/css/mainpage.css">
+    <link rel="stylesheet" href="./assets/css/gameboard.css">
+    <link rel="stylesheet" href="./assets/css/mediaqueries.css">
     <script src="./assets/js/styles.js" defer></script>
     <script src="./assets/js/gameplay.js" defer></script>
     <title>Tic Tac Toe</title>
 </head>
 <body>
     <!--page 1-->
+    <video class="video_bg" autoplay muted loop>
+        <source src="./assets/css/vids/mainpage.mp4" type="video/mp4">
+    </video>
     <div class="page1">
         <h1 class="game-title">Tic Tac Toe Let's Go!</h1>
-        <button class="back-button hidden">&#8678; Back</button>
-        <button class="main-settings" id="settings">&#9881;</button>
+        <button class="back-button hidden">
+            <span>&#8678;  </span>Back
+        </button>
+        <button class="main-settings" id="settings">
+            <span>&#9881;</span>
+        </button>
         <div class="game-container main-page">
             <button class="game-buttons" id="play">Play</button>
             <button class="game-buttons" id="help">Help</button>
@@ -44,10 +52,10 @@
     <!--page 1.1.1-->
     <div class="page1-1-1 hidden">
         <div class="nav-bar">
-            <button id="quit">&#8678; Quit</button>
-            <h1>Tic Tac Toe Let's Go!</h1>
-            <button id="settings">&#9881;</button>
+            <button id="quit"><span>&#8678;</span>  Quit</button>
+            <button id="settings"><span>&#9881;</span></button>
         </div>
+        <h1 class="game-title">Tic Tac Toe Let's Go!</h1>
         <div class="scoresheet">
             <span id="player1_name">Player 1</span>
             <div class="scoreboard">
@@ -70,26 +78,26 @@
         </div>
         <div class="player-form hidden">
             <div class="form-content">
-                <span>Who will go First?</span>
-                <div class="first-turn">
-                    <button id="btn_x" class="playfirst_btn">
-                        <span>X</span>
-                    </button>
-                    <button id="btn_o" class="playfirst_btn">
-                        <span>O</span>
-                    </button>
+                <div class="form_title">
+                    <span>Who will go First?</span>
+                    <div class="first-turn">
+                        <button id="btn_x" class="playfirst_btn">X
+                        </button>
+                        <button id="btn_o" class="playfirst_btn">O
+                        </button>
+                    </div>
+                    <span class="error-hint hide">Please select who'll play first.</span>
                 </div>
-                <span class="error-hint hidden">Please select who'll play first.</span>
                 <div class="player_names">
                     <div class="player_name">
                         <span>Player X:</span>
-                        <input id="player_1" type="text" placeholder="Player 1" maxlength="10">
-                        <span class="error-hint hidden">Name must be 1-10 characters.</span>
+                        <input id="player_1" type="text" placeholder="Player 1" maxlength="8">
+                        <span class="error-hint hide">Name must be 1-8 characters.</span>
                     </div>
                     <div class="player_name">
                         <span>Player O:</span>
-                        <input id="player_2" type="text" placeholder="Player 2" maxlength="10">
-                        <span class="error-hint hidden">Name must be 1-10 characters.</span>
+                        <input id="player_2" type="text" placeholder="Player 2" maxlength="8">
+                        <span class="error-hint hide">Name must be 1-8 characters.</span>
                     </div>
                 </div>
                 <div class="play_btn">
@@ -98,9 +106,9 @@
             </div>
         </div>
         <div class="game-selectors hidden">
-            <button class="btn-ingame" id="btn_previous">Previous</button>
-            <button class="btn-ingame retry">Play Again</button>
-            <button class="btn-ingame" id="btn_next">Next</button>
+            <button class="btn-ingame" id="btn_previous">&#8810; Prev</button>
+            <button class="btn-ingame retry"><span style="font-size:20px;">&#8635;</span> Play Again</button>
+            <button class="btn-ingame" id="btn_next">Next &#8811;</button>
         </div>
         <div class="quit-popup hidden">
             <div class="quit-content">

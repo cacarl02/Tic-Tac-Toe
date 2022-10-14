@@ -1,0 +1,25 @@
+@media screen and (max-width: 768px) {
+    .page1, .page1-1-1 {
+        width: 100%;
+        height: 100%;
+    }
+    .quit-content, .result-content, .form-content {
+        width: 60%;
+        height: 40%;
+    }
+    .game-title {
+        margin-bottom: 50px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .game-title {
+        font-size: 36px;
+    }   
+    .quit-content, .result-content, .form-content {
+        width: 80%;
+        height: 30%;
+    }
+    .scoresheet {
+        padding: 20px;
+    }
+}

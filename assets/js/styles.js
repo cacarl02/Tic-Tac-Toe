@@ -77,20 +77,19 @@ let currentPlayer = '';
 const validateInput = () => {
     playerOneInput.classList.add('invalid');
     playerTwoInput.classList.add('invalid');
-    playerOneInput.nextElementSibling.classList.remove('hidden');
-    playerTwoInput.nextElementSibling.classList.remove('hidden');
-    firstTurn.nextElementSibling.classList.remove('hidden');
+    playerOneInput.nextElementSibling.classList.remove('hide');
+    playerTwoInput.nextElementSibling.classList.remove('hide');
+    firstTurn.nextElementSibling.classList.remove('hide');
 
     if(playerOneInput.value) {
         isP1Valid = true;
         playerOneInput.classList.remove('invalid');
-        playerOneInput.nextElementSibling.classList.add('hidden');
-
+        playerOneInput.nextElementSibling.classList.add('hide');
     }
     if(playerTwoInput.value) {
         isP2Valid = true;
         playerTwoInput.classList.remove('invalid');
-        playerTwoInput.nextElementSibling.classList.add('hidden');
+        playerTwoInput.nextElementSibling.classList.add('hide');
     }
 }
 function playGame() {
@@ -100,17 +99,24 @@ function playGame() {
 }
 btnO.addEventListener('click', () => {
     currentPlayer = 'O';
-    firstTurn.nextElementSibling.classList.add('hidden');
+    firstTurn.nextElementSibling.classList.add('hide');
+    btnX.classList.remove('x_first');
+    btnO.classList.add('o_first');
 })
 btnX.addEventListener('click', () => {
     currentPlayer = 'X';
-    firstTurn.nextElementSibling.classList.add('hidden');
+    firstTurn.nextElementSibling.classList.add('hide');
+    btnX.classList.add('x_first');
+    btnO.classList.remove('o_first');
 })
 letsPlay.addEventListener('click', (event) => {
     validateInput();
+    if(currentPlayer !=='') {
+        firstTurn.nextElementSibling.classList.add('hide');
+    }
     if(isP1Valid && isP2Valid && currentPlayer !== '') {
         playGame();
-        firstTurn.nextElementSibling.classList.add('hidden');
+        firstTurn.nextElementSibling.classList.add('hide');
         playerTurn.textContent = `${currentPlayer} will go first!`;
     } else {
         event.preventDefault();

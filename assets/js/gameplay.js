@@ -123,6 +123,9 @@ function restartGame() {    //reset every cell to '', loser plays first
     displayResult.classList.add('hidden');
     gameSelectors.classList.add('hidden');
     revenge = false;
+    undo.style.visibility = 'visible';
+    btnX.classList.remove('x_first');
+    btnO.classList.remove('o_first');
 }
 
 returnLobby.addEventListener('click', quitListener)
@@ -131,11 +134,10 @@ reviewGame.addEventListener('click', () => {
     redo.style.visibility = 'hidden';
     displayResult.classList.add('hidden');
     gameSelectors.classList.remove('hidden');
-    
 })
 
 const prevClick = () => {
-    if(turnCount ===1) {
+    if(turnCount ===2) {
         undo.style.visibility = 'hidden';
     }
     cells[cellHistory[turnCount-1]].textContent = '';
