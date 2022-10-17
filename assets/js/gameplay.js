@@ -44,7 +44,6 @@ function cellClicked() {    //cell-click functions
     if(board[cellIndex] !=="" || !isGameOngoing) {
         return;
     }
-    xoxSound.play();
     cellHistory.push(cellIndex);
     turnCount++;
     updateCell(this, cellIndex);
@@ -54,6 +53,7 @@ function updateCell(cell,index) { //output on cell-click
     board[index] = currentPlayer;
     cell.textContent = currentPlayer;
     markHistory.push(board[index]);
+    xoxSound.play();
 }
 function changePlayer() {   //alternating turn
     currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -90,10 +90,14 @@ function checkWinner() {    //winning, losing, and draw functions
             p1count++;
             winImg.classList.add('x')
             winImg.classList.remove('o')
+            announce.textContent = `${playerOneInput.value} wins!`;
+            playerTurn.textContent = `${playerOneInput.value} wins!`;
         } else {
             p2count++;
             winImg.classList.add('o');
             winImg.classList.remove('x')
+            announce.textContent = `${playerTwoInput.value} wins!`;
+            playerTurn.textContent = `${playerTwoInput.value} wins!`;
         }
         player1Score.textContent = p1count;
         player2Score.textContent = p2count;

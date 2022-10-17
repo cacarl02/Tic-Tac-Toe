@@ -116,8 +116,12 @@ letsPlay.addEventListener('click', (event) => {
     if(currentPlayer !=='') {
         firstTurn.nextElementSibling.classList.remove('active');
     }
+    if(isP1Valid == false || isP2Valid == false || currentPlayer == '') {
+        invalidSound.play();
+    }
     if(isP1Valid && isP2Valid && currentPlayer !== '') {
         playGame();
+        startSound.play();
         firstTurn.nextElementSibling.classList.remove('active');
         playerTurn.textContent = `${currentPlayer} will go first!`;
     } else {
@@ -142,3 +146,11 @@ xoxSound.src = './assets/css/music/cell_click.wav';
 //bgmusic sound
 let bgMusic = new Audio();
 bgMusic.src = './assets/css/music/bg_music.mp3';
+
+//startgame sound
+let startSound = new Audio();
+startSound.src = './assets/css/music/startgame.wav';
+
+//invalid sound
+let invalidSound = new Audio();
+invalidSound.src = './assets/css/music/invalid.wav';
