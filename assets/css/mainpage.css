@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     list-style-type: none;
-    font-family: 'Segoe UI', sans-serif;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 *::after, *::before {
@@ -28,7 +27,7 @@ body {
     opacity: 1;
     transition: opacity 1s ease;
 }
-.game-buttons, .back-button, .btn-result, .playfirst_btn, .quit-btn, #quit, #settings, .cell {
+.game-buttons, .back-button, .btn-result, .btn-ingame, .playfirst_btn, .play_btn, .quit-btn, #quit, #settings, .cell {
     cursor: pointer;
 }
 .page1{

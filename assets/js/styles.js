@@ -17,7 +17,7 @@ const playerOneName = document.querySelector('#player1_name');
 const playerTwoName = document.querySelector('#player2_name');
 const playerOneInput = document.querySelector('#player_1');
 const playerTwoInput = document.querySelector('#player_2');
-const letsPlay = document.querySelector('#letsplay');
+const letsPlay = document.querySelector('.play_btn');
 const playerForm = document.querySelector('.player-form');
 
 const firstTurn = document.querySelector('.first-turn');
@@ -46,6 +46,8 @@ multiPlayer.addEventListener('click', () => {
     backButton.classList.add('hidden');
     gamePage.classList.remove('hidden');
     playerForm.classList.remove('hidden');
+    document.getElementById('audio').play();
+    document.getElementById('audio').volume = 0.3;
 })
 
 //in-game selectors
@@ -77,19 +79,19 @@ let currentPlayer = '';
 const validateInput = () => {
     playerOneInput.classList.add('invalid');
     playerTwoInput.classList.add('invalid');
-    playerOneInput.nextElementSibling.classList.remove('hide');
-    playerTwoInput.nextElementSibling.classList.remove('hide');
-    firstTurn.nextElementSibling.classList.remove('hide');
+    playerOneInput.nextElementSibling.classList.add('active');
+    playerTwoInput.nextElementSibling.classList.add('active');
+    firstTurn.nextElementSibling.classList.add('active');
 
     if(playerOneInput.value) {
         isP1Valid = true;
         playerOneInput.classList.remove('invalid');
-        playerOneInput.nextElementSibling.classList.add('hide');
+        playerOneInput.nextElementSibling.classList.remove('active');
     }
     if(playerTwoInput.value) {
         isP2Valid = true;
         playerTwoInput.classList.remove('invalid');
-        playerTwoInput.nextElementSibling.classList.add('hide');
+        playerTwoInput.nextElementSibling.classList.remove('active');
     }
 }
 function playGame() {
@@ -99,26 +101,44 @@ function playGame() {
 }
 btnO.addEventListener('click', () => {
     currentPlayer = 'O';
-    firstTurn.nextElementSibling.classList.add('hide');
+    firstTurn.nextElementSibling.classList.remove('active');
     btnX.classList.remove('x_first');
     btnO.classList.add('o_first');
 })
 btnX.addEventListener('click', () => {
     currentPlayer = 'X';
-    firstTurn.nextElementSibling.classList.add('hide');
+    firstTurn.nextElementSibling.classList.remove('active');
     btnX.classList.add('x_first');
     btnO.classList.remove('o_first');
 })
 letsPlay.addEventListener('click', (event) => {
     validateInput();
     if(currentPlayer !=='') {
-        firstTurn.nextElementSibling.classList.add('hide');
+        firstTurn.nextElementSibling.classList.remove('active');
     }
     if(isP1Valid && isP2Valid && currentPlayer !== '') {
         playGame();
-        firstTurn.nextElementSibling.classList.add('hide');
+        firstTurn.nextElementSibling.classList.remove('active');
         playerTurn.textContent = `${currentPlayer} will go first!`;
     } else {
         event.preventDefault();
     }
 })
+
+//page1-click sound
+const button1 = document.querySelectorAll('.page1 button');
+
+button1.forEach(click => click.addEventListener('click', buttonClick));
+function buttonClick() {
+    const buttonClickSound = new Audio();
+    buttonClickSound.src = './assets/css/music/click_music.wav';
+    buttonClickSound.play();
+}
+
+//cell-click sound
+let xoxSound = new Audio();
+xoxSound.src = './assets/css/music/cell_click.wav';
+
+//bgmusic sound
+let bgMusic = new Audio();
+bgMusic.src = './assets/css/music/bg_music.mp3';

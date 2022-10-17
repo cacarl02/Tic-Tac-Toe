@@ -96,6 +96,16 @@
 .result-content {
     height: 40%;
 }
+.result-content.x {
+    background-image: url(./images/x_wins.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.result-content.o {
+    background-image: url(./images/x_wins2.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .form-content {
     height: 50%;
     width: 40%;
@@ -139,7 +149,7 @@
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
-    margin: 10px 0;
+    margin-top: 10px;
 }
 .player_name {
     display: flex;
@@ -183,9 +193,21 @@ input[type='text'] {
 input.invalid {
     border: 1px solid red;
 }
+@keyframes flicker {
+    0% {opacity: 1;}
+    25% {opacity: 0;}
+    50% {opacity: 1;}
+    75% {opacity: 0;}
+    100% {opacity: 1;}
+}
 .error-hint {
     font-size: 10px;
     color: red;
+    opacity: 0;
+}
+.error-hint.active {
+    animation: flicker 2s infinite;
+    opacity: 1;
 }
 .game-selectors {
     display: flex;
@@ -204,4 +226,7 @@ input.invalid {
 }
 .hide {
     opacity: 0;
+}
+.active {
+    opacity: 1;
 }

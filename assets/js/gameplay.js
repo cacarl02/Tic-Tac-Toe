@@ -12,6 +12,8 @@ const player2Score = document.querySelector('#player2-score');
 const undo = document.querySelector('#btn_previous');
 const redo = document.querySelector('#btn_next');
 
+const winImg = document.querySelector('.result-content');
+
 const winningConditions = [
     [0,1,2],
     [3,4,5],
@@ -42,6 +44,7 @@ function cellClicked() {    //cell-click functions
     if(board[cellIndex] !=="" || !isGameOngoing) {
         return;
     }
+    xoxSound.play();
     cellHistory.push(cellIndex);
     turnCount++;
     updateCell(this, cellIndex);
@@ -76,14 +79,21 @@ function checkWinner() {    //winning, losing, and draw functions
     }
     if(roundWon) {
         displayResult.classList.remove('hidden');
-        announce.textContent = `${currentPlayer} wins!`;
-        playerTurn.textContent = `${currentPlayer} wins!`;
+        announce.textContent = `${playerOneInput.value} wins!`;
+        playerTurn.textContent = `${playerTwoInput.value} wins!`;
         isGameOngoing = false;
         revenge = true;
+        let winSound = new Audio();
+        winSound.src = './assets/css/music/win_music.mp3';
+        winSound.play();
         if(currentPlayer === 'X') {
             p1count++;
+            winImg.classList.add('x')
+            winImg.classList.remove('o')
         } else {
             p2count++;
+            winImg.classList.add('o');
+            winImg.classList.remove('x')
         }
         player1Score.textContent = p1count;
         player2Score.textContent = p2count;
