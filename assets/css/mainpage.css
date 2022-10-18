@@ -18,6 +18,8 @@
     --button-shadow: rgb(12, 96, 31);
     --button-shadow2: rgb(90, 126, 91);
     --button-bg: linear-gradient(to bottom, rgb(12, 234, 49), #12a476);
+    --o_win-shadow: rgb(239, 235, 0);
+    --x_win-shadow: rgb(0, 116, 232);
 }
 body {
     display: flex;
@@ -59,6 +61,7 @@ body {
     text-align: center;
     font-size: 48px;
     margin-bottom: 30px;
+    text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;
 }
 .game-buttons {
     font-size: 24px;

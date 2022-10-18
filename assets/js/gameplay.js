@@ -46,9 +46,9 @@ function cellClicked() {    //cell-click functions
         return;
     }
     if(currentPlayer == 'X') {
-        cells[cellIndex].classList.add('x');
+        cells[cellIndex].style.color = 'dodgerblue';
     } else {
-        cells[cellIndex].classList.add('o');
+        cells[cellIndex].style.color = 'gold';
     }
     cellHistory.push(cellIndex);
     turnCount++;
@@ -80,6 +80,15 @@ function checkWinner() {    //winning, losing, and draw functions
         }
         if(cellA == cellB && cellB == cellC) {
             roundWon = true;
+            if(currentPlayer == 'X') {
+                cells[sameValue[0]].classList.add('x_won');
+                cells[sameValue[1]].classList.add('x_won');
+                cells[sameValue[2]].classList.add('x_won');
+            } else {
+                cells[sameValue[0]].classList.add('o_won');
+                cells[sameValue[1]].classList.add('o_won');
+                cells[sameValue[2]].classList.add('o_won');
+            }
             break;
         }
     }
@@ -128,7 +137,6 @@ function resetData() {     //reset score count every quit and return to lobby
     isP1Valid = false;
     isP2Valid = false;
     currentPlayer = '';
-        buttonDisabler();
 }
 function restartGame() {    //reset every cell to '', loser plays first
     if(revenge) {
@@ -140,10 +148,12 @@ function restartGame() {    //reset every cell to '', loser plays first
     turnCount = 0;
     playerTurn.textContent = `${currentPlayer} will go first!`;
     cells.forEach(cell => cell.textContent = '');
+    cells.forEach(cell => cell.classList.remove('x_won'));
+    cells.forEach(cell => cell.classList.remove('o_won'));
     isGameOngoing = true;
+    revenge = false;
     displayResult.classList.add('hidden');
     gameSelectors.classList.add('hide');
-    revenge = false;
     undo.style.visibility = 'visible';
     btnX.classList.remove('x_first');
     btnO.classList.remove('o_first');

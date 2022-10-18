@@ -61,6 +61,22 @@
     justify-content: center;
     font-size: 90px;
 }
+.cell.x_won {
+    text-shadow: 0 0 4px #fff,  0 0 24px var(--x_win-shadow),  0 0 48px var(--x_win-shadow), 0 0 64px var(--x_win-shadow), 0 0 96px var(--x_win-shadow), 0 0 108px var(--x_win-shadow);
+}
+.cell.o_won {
+    text-shadow: 0 0 4px #fff,  0 0 24px var(--o_win-shadow),  0 0 48px var(--o_win-shadow), 0 0 64px var(--o_win-shadow), 0 0 96px var(--o_win-shadow), 0 0 108px var(--o_win-shadow);
+}
+@keyframes titleflicker {
+    0% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+    25% {text-shadow: none;}
+    50% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+    75% {text-shadow: none;}
+    100% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+}
+.game-title.blink {
+    animation: titleflicker 2s infinite;
+}
 .cell:first-child, .cell:nth-child(2), .cell:nth-child(3) {
     border-top: none;
 }
