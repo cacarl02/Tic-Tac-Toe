@@ -12,6 +12,12 @@
     --cell-size: 100px;
     --mark-size: calc(var(--cell-size)*0.9);
     color-scheme: dark;
+    --text-shadow: rgb(55, 156, 32);
+    --text-shadow2: rgb(37, 98, 26);
+    --button-shadow0: 0px 6px rgb(12, 130, 14);
+    --button-shadow: rgb(12, 96, 31);
+    --button-shadow2: rgb(90, 126, 91);
+    --button-bg: linear-gradient(to bottom, rgb(12, 234, 49), #12a476);
 }
 body {
     display: flex;
@@ -27,7 +33,7 @@ body {
     opacity: 1;
     transition: opacity 1s ease;
 }
-.game-buttons, .back-button, .btn-result, .btn-ingame, .playfirst_btn, .play_btn, .quit-btn, #quit, #settings, .cell {
+.game-buttons, .back-button, .btn-result, .btn-ingame, .playfirst_btn, .play_btn, #letsplay, .quit-btn, #quit, #settings, .cell {
     cursor: pointer;
 }
 .page1{
@@ -66,4 +72,24 @@ body {
 }
 button {
     border: transparent;
+}
+.game-container button, .result-content button, .quit-btn, .game-selectors button {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px 4px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, rgb(12, 234, 49), #14aa1e, #12a476);
+    box-shadow: 0px 6px rgb(12, 130, 14);
+}
+.game-container button:active, .result-content button:active, .quit-btn:active, .game-selectors button:active{
+    box-shadow: 0px 3px  rgb(12, 130, 14);
+    transform: translateY(3px);
+}
+.game-container button:hover, .result-content button:hover, .quit-btn:hover, .game-selectors button:hover, .play_btn:hover{
+    background: linear-gradient(to bottom, rgb(14, 252, 53), #18c423, #16c68e);
+}
+.game-selectors button {
+    padding: 3px 6px 4px;
 }

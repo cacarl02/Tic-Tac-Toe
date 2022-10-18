@@ -1,5 +1,5 @@
 .page1-1-1 {
-    height: 70vh;
+    height: 80vh;
     width: 768px;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,8 @@
     font-size: 40px;
     padding: 0 12px;
     border-radius: 100%;
-    border: transparent
+    border: transparent;
+    background: none;
 }
 .board {
     display: grid;
@@ -54,7 +55,7 @@
     width: var(--cell-size);
     height: var(--cell-size);
     background: none;
-    border: 1px solid black;
+    border: 1px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +113,9 @@
 }
 .quit-option {
     margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .quit-btn {
     margin: 0 10px;
@@ -124,14 +128,14 @@
     left: 20px;
     width: 80px;
     font-size: 16px;
-    border-radius: 20px;
-    padding: 4px 8px;
+    background: none;
 }
 .main-settings {
     top: 20px;
     right: 20px;
     font-size: 40px !important;
-    border-radius: 100%
+    border-radius: 100%;
+    background: none;
 }
 .announce-result, .player-turn {
     font-size: 20px;
@@ -177,6 +181,37 @@
     background-color: #222;
     color: #555;
 }
+#letsplay {
+    background: none;
+}
+#letsplay, .game-container button {
+    border: none;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-bottom: 6px;
+    text-shadow: 2px 2px 1px var(--text-shadow), 
+    -2px 2px 1px var(--text-shadow), 
+    2px -2px 1px var(--text-shadow), 
+    -2px -2px 1px var(--text-shadow), 
+    0px 2px 1px var(--text-shadow), 
+    0px -2px 1px var(--text-shadow), 
+    0px 4px 1px var(--text-shadow2), 
+    2px 4px 1px var(--text-shadow2), 
+    -2px 4px 1px  var(--text-shadow2);
+}
+.play_btn {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px 4px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, rgb(12, 234, 49), #14aa1e, #12a476);
+    box-shadow: 0px 6px rgb(12, 130, 14), 0px 10px 0 2px var(--button-shadow), 0px 12px 0 2px var(--button-shadow2);
+}
+.play_btn:active {
+    transform: translateY(6px);
+    box-shadow: 0px 4px 0 2px var(--button-shadow), 0px 6px 0 2px var(--button-shadow2);
+}
 .x_first {
     background-color: #555;
     color: dodgerblue;
@@ -218,7 +253,7 @@ input.invalid {
 }
 .btn-ingame {
     background: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 /* hidden active template*/
 .hidden {
@@ -226,6 +261,9 @@ input.invalid {
 }
 .hide {
     opacity: 0;
+}
+.hide2 {
+    visibility: hidden;
 }
 .active {
     opacity: 1;

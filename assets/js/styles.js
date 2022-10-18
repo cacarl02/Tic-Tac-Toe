@@ -47,7 +47,7 @@ multiPlayer.addEventListener('click', () => {
     gamePage.classList.remove('hidden');
     playerForm.classList.remove('hidden');
     document.getElementById('audio').play();
-    document.getElementById('audio').volume = 0.3;
+    document.getElementById('audio').volume = 0.2;
 })
 
 //in-game selectors
@@ -72,6 +72,8 @@ function quitListener() {
     quitPopup.classList.add('hidden');
     restartGame();
     resetData();
+    video[0].classList.remove('hide');
+    video[1].classList.add('hide');
 }
 let isP1Valid = false;
 let isP2Valid = false;
@@ -124,6 +126,8 @@ letsPlay.addEventListener('click', (event) => {
         startSound.play();
         firstTurn.nextElementSibling.classList.remove('active');
         playerTurn.textContent = `${currentPlayer} will go first!`;
+        video[1].classList.remove('hide');
+        video[0].classList.add('hide');
     } else {
         event.preventDefault();
     }
@@ -154,3 +158,6 @@ startSound.src = './assets/css/music/startgame.wav';
 //invalid sound
 let invalidSound = new Audio();
 invalidSound.src = './assets/css/music/invalid.wav';
+
+//video query
+const video = document.querySelectorAll('.video_bg');

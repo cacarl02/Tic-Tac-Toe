@@ -6,6 +6,7 @@ const returnLobby = document.querySelector('#lobby');
 const announce = document.querySelector('.announce-result');
 const displayResult = document.querySelector('.display-result');
 const gameSelectors = document.querySelector('.game-selectors');
+const gameSelButtons = document.querySelectorAll('.game-selectors button');
 const player1Score = document.querySelector('#player1-score');
 const player2Score = document.querySelector('#player2-score');
 
@@ -43,6 +44,11 @@ function cellClicked() {    //cell-click functions
     const cellIndex = this.getAttribute('cellIndex');
     if(board[cellIndex] !=="" || !isGameOngoing) {
         return;
+    }
+    if(currentPlayer == 'X') {
+        cells[cellIndex].classList.add('x');
+    } else {
+        cells[cellIndex].classList.add('o');
     }
     cellHistory.push(cellIndex);
     turnCount++;
@@ -122,6 +128,7 @@ function resetData() {     //reset score count every quit and return to lobby
     isP1Valid = false;
     isP2Valid = false;
     currentPlayer = '';
+        buttonDisabler();
 }
 function restartGame() {    //reset every cell to '', loser plays first
     if(revenge) {
@@ -140,14 +147,25 @@ function restartGame() {    //reset every cell to '', loser plays first
     undo.style.visibility = 'visible';
     btnX.classList.remove('x_first');
     btnO.classList.remove('o_first');
+    buttonDisabler();
 }
-
+function buttonEnabler() {
+for(let i=0; i<gameSelButtons.length; i++) {
+    gameSelButtons[i].disabled = false;
+}
+}
+function buttonDisabler() {
+    for(let i=0; i<gameSelButtons.length; i++) {
+        gameSelButtons[i].disabled = true;
+    }
+    }
 returnLobby.addEventListener('click', quitListener)
 
 reviewGame.addEventListener('click', () => {
     redo.style.visibility = 'hidden';
     displayResult.classList.add('hidden');
     gameSelectors.classList.remove('hide');
+    buttonEnabler();
 })
 
 const prevClick = () => {
