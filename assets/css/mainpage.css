@@ -35,7 +35,7 @@ body {
     opacity: 1;
     transition: opacity 1s ease;
 }
-.game-buttons, .back-button, .btn-result, .btn-ingame, .playfirst_btn, .play_btn, #letsplay, .quit-btn, #quit, #settings, .main-settings, .settings_content img, .cell {
+.game-buttons, .bg, .click, .back-button, .btn-result, .btn-ingame, .playfirst_btn, .play_btn, #letsplay, .quit-btn, #quit, #settings, .main-settings, .settings_content img, .cell {
     cursor: pointer;
 }
 .page1{
@@ -75,35 +75,6 @@ body {
 }
 button {
     border: transparent;
-}
-.settings_dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: #444;
-    width: 200px;
-    height: 100%;
-    transition: right 0.3s ease;
-}
-.settings_content {
-    margin: 0 20px;
-    margin-top: 50px;
-}
-.settings_dropdown img {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 25px;
-    right: 10px;
-}
-.settings_dropdown h3 {
-    margin-bottom: 40px;
-}
-.settings_dropdown ul li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
 }
 .game-container button, .result-content button, .quit-btn, .game-selectors button {
     margin: 10px;

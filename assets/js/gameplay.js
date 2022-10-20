@@ -15,6 +15,11 @@ const redo = document.querySelector('#btn_next');
 
 const winImg = document.querySelector('.result-content');
 
+const bgSet = document.getElementById('bg_sounds');
+const clickSet = document.getElementById('click_sounds');
+const bgClick = document.querySelector('.bg');
+const clickClick = document.querySelector('.click');
+
 const winningConditions = [
     [0,1,2],
     [3,4,5],
@@ -101,19 +106,21 @@ function checkWinner() {    //winning, losing, and draw functions
         playerTurn.textContent = `${playerTwoInput.value} wins!`;
         isGameOngoing = false;
         revenge = true;
-        let winSound = new Audio();
-        winSound.src = './assets/css/music/win_music.mp3';
         winSound.play();
         if(currentPlayer === 'X') {
             p1count++;
             winImg.classList.add('x');
             winImg.classList.remove('o');
+            announce.style.color = 'dodgerblue';
+            playerTurn.style.color = 'dodgerblue';
             announce.textContent = `${playerOneInput.value} wins!`;
             playerTurn.textContent = `${playerOneInput.value} wins!`;
         } else {
             p2count++;
             winImg.classList.add('o');
             winImg.classList.remove('x');
+            announce.style.color = 'gold';
+            playerTurn.style.color = 'gold';
             announce.textContent = `${playerTwoInput.value} wins!`;
             playerTurn.textContent = `${playerTwoInput.value} wins!`;
         }
@@ -163,6 +170,9 @@ function restartGame() {    //reset every cell to '', loser plays first
     btnX.classList.remove('x_first');
     btnO.classList.remove('o_first');
     buttonDisabler();
+    document.querySelector('.settings_dropdown').classList.remove('reveal');
+    announce.style.color = '#fff';
+    playerTurn.style.color = '#fff';
 }
 function buttonEnabler() {
 for(let i=0; i<gameSelButtons.length; i++) {
@@ -202,3 +212,29 @@ const nextClick = () => {
 
 undo.addEventListener('click', prevClick);
 redo.addEventListener('click', nextClick);
+
+function muteUnmute() {
+if(bgSet.checked) {
+    bgClick.innerHTML = '&#128264;';
+    document.getElementById('audio').muted = false;
+} else {
+    bgClick.innerHTML = '&#128263;';
+    document.getElementById('audio').muted = true;
+}
+if(clickSet.checked) {
+    clickClick.innerHTML = '&#128264;';
+    buttonClickSound.volume = 1;
+    xoxSound.volume = 1;
+    invalidSound.volume = 1;
+    startSound.volume = 1;
+    winSound.volume = 1;
+
+} else {
+    clickClick.innerHTML = '&#128263;';
+    buttonClickSound.volume = 0;
+    xoxSound.volume = 0;
+    invalidSound.volume = 0;
+    startSound.volume = 0;
+    winSound.volume = 0;
+}
+}

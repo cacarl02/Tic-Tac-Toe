@@ -47,7 +47,6 @@ multiPlayer.addEventListener('click', () => {
     gamePage.classList.remove('hidden');
     playerForm.classList.remove('hidden');
     document.getElementById('audio').play();
-    document.getElementById('audio').volume = 0.2;
 })
 
 //in-game selectors
@@ -58,6 +57,8 @@ const resume = document.querySelector('#resume');
 
 quitButton.addEventListener('click', () => {
     quitPopup.classList.remove('hidden');
+    document.querySelector('.settings_dropdown').classList.remove('reveal');
+    buttonClickSound.play();
 })
 quit.addEventListener('click', quitListener)
 
@@ -142,35 +143,43 @@ function buttonClick() {
     buttonClickSound.play();
 }
 
-//button-click sound
-const buttonClickSound = new Audio();
-buttonClickSound.src = './assets/css/music/click_music.wav';
-
-//cell-click sound
-let xoxSound = new Audio();
-xoxSound.src = './assets/css/music/cell_click.wav';
-
-//bgmusic sound
-let bgMusic = new Audio();
-bgMusic.src = './assets/css/music/bg_music.mp3';
-
-//startgame sound
-let startSound = new Audio();
-startSound.src = './assets/css/music/startgame.wav';
-
-//invalid sound
-let invalidSound = new Audio();
-invalidSound.src = './assets/css/music/invalid.wav';
-
-//video query
-const video = document.querySelectorAll('.video_bg');
-
 //function of settings tab
 const settings = document.getElementById('settings');
 
 settings.addEventListener('click', () => {
     document.querySelector('.settings_dropdown').classList.toggle('reveal');
+    buttonClickSound.play();
 })
 document.querySelector('.settings_content img').addEventListener('click', () => {
     document.querySelector('.settings_dropdown').classList.remove('reveal');
 })
+
+//  AUDIO-VIDEO PART //
+
+//button-click sound
+const buttonClickSound = new Audio();
+buttonClickSound.src = './assets/css/music/click_music.wav';
+
+//cell-click sound
+const xoxSound = new Audio();
+xoxSound.src = './assets/css/music/cell_click.wav';
+
+//bgmusic sound
+const bgMusic = new Audio();
+bgMusic.src = './assets/css/music/bg_music.mp3';
+document.getElementById('audio').volume = 0.2;
+
+//startgame sound
+const startSound = new Audio();
+startSound.src = './assets/css/music/startgame.wav';
+
+//invalid sound
+const invalidSound = new Audio();
+invalidSound.src = './assets/css/music/invalid.wav';
+
+//win sound
+const winSound = new Audio();
+winSound.src = './assets/css/music/win_music.mp3';
+
+//video query
+const video = document.querySelectorAll('.video_bg');
