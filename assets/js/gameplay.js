@@ -93,7 +93,10 @@ function checkWinner() {    //winning, losing, and draw functions
         }
     }
     if(roundWon) {
-        displayResult.classList.remove('hidden');
+        function resultDelay() {
+            displayResult.classList.remove('hidden');
+        }
+        setTimeout(resultDelay, 2000);
         announce.textContent = `${playerOneInput.value} wins!`;
         playerTurn.textContent = `${playerTwoInput.value} wins!`;
         isGameOngoing = false;
@@ -103,14 +106,14 @@ function checkWinner() {    //winning, losing, and draw functions
         winSound.play();
         if(currentPlayer === 'X') {
             p1count++;
-            winImg.classList.add('x')
-            winImg.classList.remove('o')
+            winImg.classList.add('x');
+            winImg.classList.remove('o');
             announce.textContent = `${playerOneInput.value} wins!`;
             playerTurn.textContent = `${playerOneInput.value} wins!`;
         } else {
             p2count++;
             winImg.classList.add('o');
-            winImg.classList.remove('x')
+            winImg.classList.remove('x');
             announce.textContent = `${playerTwoInput.value} wins!`;
             playerTurn.textContent = `${playerTwoInput.value} wins!`;
         }
@@ -118,6 +121,8 @@ function checkWinner() {    //winning, losing, and draw functions
         player2Score.textContent = p2count;
     }
     else if(!board.includes('')) {
+        winImg.classList.remove('x');
+        winImg.classList.remove('o');
         playerTurn.textContent = 'Draw!';
         announce.textContent = 'Draw!';
         isGameOngoing = false;

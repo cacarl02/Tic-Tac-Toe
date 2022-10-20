@@ -7,6 +7,14 @@
         width: 60%;
         height: 40%;
     }
+    .settings_dropdown {
+        position: fixed;
+        display: block;
+        right: -200px;
+    }
+    .settings_dropdown.reveal {
+        right: 0;
+    }
 }
 @media screen and (max-width: 550px) {
     .game-title {
@@ -33,3 +41,51 @@
         top: 25px;
     }
 }
+@keyframes flicker {
+    0% {opacity: 1;}
+    25% {opacity: 0;}
+    50% {opacity: 1;}
+    75% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes titleflicker {
+    0% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+    25% {text-shadow: none;}
+    50% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+    75% {text-shadow: none;}
+    100% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+}
+@keyframes x_won {
+    0% {
+        text-shadow: 0 0 4px #fff,  0 0 24px var(--x_win-shadow),  0 0 48px var(--x_win-shadow), 0 0 64px var(--x_win-shadow), 0 0 96px var(--x_win-shadow), 0 0 108px var(--x_win-shadow);
+    }
+    25% {
+        text-shadow: none;
+    }
+    50% {
+        text-shadow: 0 0 4px #fff,  0 0 24px var(--x_win-shadow),  0 0 48px var(--x_win-shadow), 0 0 64px var(--x_win-shadow), 0 0 96px var(--x_win-shadow), 0 0 108px var(--x_win-shadow);
+    }
+    75% {
+        text-shadow: none;
+    }
+    100% {
+    text-shadow: 0 0 4px #fff,  0 0 24px var(--x_win-shadow),  0 0 48px var(--x_win-shadow), 0 0 64px var(--x_win-shadow), 0 0 96px var(--x_win-shadow), 0 0 108px var(--x_win-shadow);
+    }
+}   
+@keyframes o_won {
+    0% {
+        text-shadow: 0 0 4px #fff,  0 0 24px var(--o_win-shadow),  0 0 48px var(--o_win-shadow), 0 0 64px var(--o_win-shadow), 0 0 96px var(--o_win-shadow), 0 0 108px var(--o_win-shadow);
+    }
+    25% {
+        text-shadow: none;
+    }
+    50% {
+        text-shadow: 0 0 4px #fff,  0 0 24px var(--o_win-shadow),  0 0 48px var(--o_win-shadow), 0 0 64px var(--o_win-shadow), 0 0 96px var(--o_win-shadow), 0 0 108px var(--o_win-shadow);
+    }
+    75% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 0 0 4px #fff,  0 0 24px var(--o_win-shadow),  0 0 48px var(--o_win-shadow), 0 0 64px var(--o_win-shadow), 0 0 96px var(--o_win-shadow), 0 0 108px var(--o_win-shadow);
+    }
+}   

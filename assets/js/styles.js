@@ -70,6 +70,7 @@ function quitListener() {
     mainPage.classList.remove('hidden');
     gamePage.classList.add('hidden');
     quitPopup.classList.add('hidden');
+    displayResult.classList.add('hidden');
     restartGame();
     resetData();
     video[0].classList.remove('hide');
@@ -97,8 +98,8 @@ const validateInput = () => {
     }
 }
 function playGame() {
-    playerOneName.textContent = `${playerOneInput.value} (X)`;
-    playerTwoName.textContent = `${playerTwoInput.value} (O)`;
+    playerOneName.textContent = `${playerOneInput.value}`;
+    playerTwoName.textContent = `${playerTwoInput.value}`;
     playerForm.classList.add('hidden');
 }
 btnO.addEventListener('click', () => {
@@ -138,10 +139,12 @@ const button1 = document.querySelectorAll('.page1 button');
 
 button1.forEach(click => click.addEventListener('click', buttonClick));
 function buttonClick() {
-    const buttonClickSound = new Audio();
-    buttonClickSound.src = './assets/css/music/click_music.wav';
     buttonClickSound.play();
 }
+
+//button-click sound
+const buttonClickSound = new Audio();
+buttonClickSound.src = './assets/css/music/click_music.wav';
 
 //cell-click sound
 let xoxSound = new Audio();
@@ -161,3 +164,13 @@ invalidSound.src = './assets/css/music/invalid.wav';
 
 //video query
 const video = document.querySelectorAll('.video_bg');
+
+//function of settings tab
+const settings = document.getElementById('settings');
+
+settings.addEventListener('click', () => {
+    document.querySelector('.settings_dropdown').classList.toggle('reveal');
+})
+document.querySelector('.settings_content img').addEventListener('click', () => {
+    document.querySelector('.settings_dropdown').classList.remove('reveal');
+})

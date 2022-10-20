@@ -27,6 +27,12 @@
     font-size: 24px;
     text-align: center;
 }
+#player1_name {
+    color: dodgerblue;
+}
+#player2_name {
+    color: gold;
+}
 .scoreboard {
     display: flex;
     align-items: center;
@@ -62,17 +68,10 @@
     font-size: 90px;
 }
 .cell.x_won {
-    text-shadow: 0 0 4px #fff,  0 0 24px var(--x_win-shadow),  0 0 48px var(--x_win-shadow), 0 0 64px var(--x_win-shadow), 0 0 96px var(--x_win-shadow), 0 0 108px var(--x_win-shadow);
+    animation: x_won 1s infinite;
 }
 .cell.o_won {
-    text-shadow: 0 0 4px #fff,  0 0 24px var(--o_win-shadow),  0 0 48px var(--o_win-shadow), 0 0 64px var(--o_win-shadow), 0 0 96px var(--o_win-shadow), 0 0 108px var(--o_win-shadow);
-}
-@keyframes titleflicker {
-    0% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
-    25% {text-shadow: none;}
-    50% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
-    75% {text-shadow: none;}
-    100% {text-shadow: 0 0 6px #fff, 0 0 24px #14aa1e, 0px 0px 48px #14aa1e, 0px 0px 64px #12a476;}
+    animation: o_won 1s infinite;
 }
 .game-title.blink {
     animation: titleflicker 2s infinite;
@@ -244,13 +243,7 @@ input[type='text'] {
 input.invalid {
     border: 1px solid red;
 }
-@keyframes flicker {
-    0% {opacity: 1;}
-    25% {opacity: 0;}
-    50% {opacity: 1;}
-    75% {opacity: 0;}
-    100% {opacity: 1;}
-}
+
 .error-hint {
     font-size: 10px;
     color: red;
@@ -283,4 +276,8 @@ input.invalid {
 }
 .active {
     opacity: 1;
+}
+.reveal {
+    display: block;
+    transition: right 0.3s ease;
 }
