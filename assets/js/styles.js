@@ -19,6 +19,7 @@ const playerOneInput = document.querySelector('#player_1');
 const playerTwoInput = document.querySelector('#player_2');
 const letsPlay = document.querySelector('.play_btn');
 const playerForm = document.querySelector('.player-form');
+const p1Form = document.querySelectorAll('.player_name')[1];
 
 const firstTurn = document.querySelector('.first-turn');
 const btnX = document.querySelector('#btn_x');
@@ -40,6 +41,23 @@ backButton.addEventListener('click', () => {
     helpPage.classList.add('hidden');
     aboutPage.classList.add('hidden');
 })
+
+//game mode selection
+let p1mode;
+let p2mode;
+singlePlayer.disabled = true;
+singlePlayer.addEventListener('click', () => {
+    originPage.classList.add('hidden');
+    playPage.classList.add('hidden');
+    backButton.classList.add('hidden');
+    gamePage.classList.remove('hidden');
+    playerForm.classList.remove('hidden');
+    document.getElementById('audio').play();
+    p1Form.classList.add('hidden');
+    playerTwoInput.value = 'CPU AI';
+    p1mode = true;
+})
+
 multiPlayer.addEventListener('click', () => {
     originPage.classList.add('hidden');
     playPage.classList.add('hidden');
@@ -47,6 +65,8 @@ multiPlayer.addEventListener('click', () => {
     gamePage.classList.remove('hidden');
     playerForm.classList.remove('hidden');
     document.getElementById('audio').play();
+    p1Form.classList.remove('hidden');
+    p1mode = false;
 })
 
 //in-game selectors
@@ -98,7 +118,7 @@ const validateInput = () => {
         playerTwoInput.nextElementSibling.classList.remove('active');
     }
 }
-function playGame() {
+function gameName() {
     playerOneName.textContent = `${playerOneInput.value}`;
     playerTwoName.textContent = `${playerTwoInput.value}`;
     playerForm.classList.add('hidden');
@@ -124,7 +144,10 @@ letsPlay.addEventListener('click', (event) => {
         invalidSound.play();
     }
     if(isP1Valid && isP2Valid && currentPlayer !== '') {
-        playGame();
+        if(currentPlayer === 'O' && p1mode == true) {
+            bot();
+        }
+        gameName();
         startSound.play();
         firstTurn.nextElementSibling.classList.remove('active');
         playerTurn.textContent = `${currentPlayer} will go first!`;

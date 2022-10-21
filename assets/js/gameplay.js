@@ -38,6 +38,9 @@ let revenge = false;
 let isGameOngoing = false;
 let turnCount = 0;
 
+function bot(){
+    console.log('AI turn');
+}
 startGame();
 function startGame() {
     isGameOngoing = true;
@@ -47,13 +50,16 @@ function startGame() {
 }
 function cellClicked() {    //cell-click functions
     const cellIndex = this.getAttribute('cellIndex');
-    if(board[cellIndex] !=="" || !isGameOngoing) {
+    if(board[cellIndex] !=="" || !isGameOngoing) {      //traps the cell-click if the game is over or the cell is occupied
         return;
     }
     if(currentPlayer == 'X') {
         cells[cellIndex].style.color = 'dodgerblue';
     } else {
         cells[cellIndex].style.color = 'gold';
+    }
+    if(currentPlayer === 'X' && p1mode == true) {
+        bot();
     }
     cellHistory.push(cellIndex);
     turnCount++;
@@ -153,6 +159,9 @@ function resetData() {     //reset score count every quit and return to lobby
 function restartGame() {    //reset every cell to '', loser plays first
     if(revenge) {
         changePlayer();
+        if(currentPlayer === 'O') {
+            bot();
+        }
     }
     board = ['','','','','','','','',''];
     markHistory = [];
