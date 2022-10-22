@@ -190,7 +190,7 @@ xoxSound.src = './assets/css/music/cell_click.wav';
 //bgmusic sound
 const bgMusic = new Audio();
 bgMusic.src = './assets/css/music/bg_music.mp3';
-document.getElementById('audio').volume = 0.2;
+document.getElementById('audio').volume = 0.1;
 
 //startgame sound
 const startSound = new Audio();

@@ -159,7 +159,7 @@ function resetData() {     //reset score count every quit and return to lobby
 function restartGame() {    //reset every cell to '', loser plays first
     if(revenge) {
         changePlayer();
-        if(currentPlayer === 'O') {
+        if(currentPlayer === 'O' && p1mode == true) {
             bot();
         }
     }
